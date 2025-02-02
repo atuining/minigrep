@@ -3,11 +3,10 @@ use std::{env, process};
 use minigrep::Config;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
     // display list of args in list to stderr
     // dbg!(args);
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem passing arguments: {err}");
         process::exit(1);
     });
